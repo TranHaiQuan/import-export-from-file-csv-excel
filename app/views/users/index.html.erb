@@ -1,0 +1,28 @@
+<h1>Import data from local</h1>
+<%= form_tag import_users_path, :multipart => true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department date</th>
+      <th>Comeback date</th>
+    </tr>
+  </thead>
+  <body>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.department_date.strftime("%d-%m-%Y") %></td>
+        <td><%= user.backdate.strftime("%d-%m-%Y") %></td>
+      </tr>
+    <% end %>
+  </body>
+</table>
